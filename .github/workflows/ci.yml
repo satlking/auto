@@ -6,22 +6,20 @@ on:
       - main
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   autogreen:
     runs-on: ubuntu-latest
-    
     permissions:
       contents: write
-  
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
-
       - name: Auto green
         run: |
-          git config --local user.email "515581746@qq.com"
-          git config --local user.name "stalk"
+          git config --local user.email "82702874+satlking@users.noreply.github.com"
+          git config --local user.name "satlking"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git pull --rebase
           git commit --allow-empty -m "a commit a day keeps your girlfriend away"
